@@ -1,3 +1,16 @@
 import React from "react"
+import Layout from "../components/layout"
 
-export default () => <div>The Great Gatsby Bootcamp</div>
+const IndexPage = () => {
+  return (
+    <div>
+      <Layout>
+        <div>
+          Anisha Gupta. Got to <a href="/blog">Blog Page</a>
+        </div>
+      </Layout>
+    </div>
+  )
+}
+
+export default IndexPage
