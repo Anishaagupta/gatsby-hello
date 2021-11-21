@@ -1,5 +1,5 @@
 module.exports = {
-  siteMetaData:{
+  siteMetadata:{
     title:"Anisha Gupta Blog",
     author:"Änisha",
   },

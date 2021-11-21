@@ -10,7 +10,7 @@ const AboutPage = () => {
         <p>
           My LinkedIn Profile
           <a
-            target="_blank"
+            rel="noreferrer"
             href="https://www.linkedin.com/in/anisha-gupta-66096318b/"
           >
             Anisha
