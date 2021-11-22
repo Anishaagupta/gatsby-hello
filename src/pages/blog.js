@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import Layout from "../components/layout"
+import * as blogStyles from "./blog.module.scss"
 
 const BlogPage = () => {
   const postData = useStaticQuery(graphql`
@@ -18,21 +19,6 @@ const BlogPage = () => {
               slug
             }
             html
-            tableOfContents(
-              absolute: true
-              pathToSlugField: "frontmatter.path"
-              heading: "only show toc from this heading onwards"
-              maxDepth: 2
-            )
-            wordCount {
-              paragraphs
-              sentences
-              words
-            }
-            headings {
-              depth
-              value
-            }
           }
         }
       }
@@ -42,18 +28,18 @@ const BlogPage = () => {
     <div>
       <Layout>
         <h1>Fresh Blogs</h1>
-        <ol>
+        <ol className={blogStyles.posts}>
           {postData.allMarkdownRemark.edges.map((edge, index) => {
             return (
-              <li key={index}>
+              <li key={index} className={blogStyles.post}>
+              <Link rel="noreferrer" to={`/blog/${edge.node.fields.slug}`}>
                 <h2>{edge.node.frontmatter.title}</h2>
                 <h6>
                   By {edge.node.frontmatter.author} on{" "}
                   {edge.node.frontmatter.date}
                 </h6>
                 <p>{edge.node.frontmatter.content}</p>
-                Read full blog{" "}
-                <Link rel="noreferrer" to={`/blog/${edge.node.fields.slug}`}>here</Link>
+                </Link>
               </li>
             )
           })}
