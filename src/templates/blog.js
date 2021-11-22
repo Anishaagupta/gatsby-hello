@@ -1,12 +1,28 @@
-import React from 'react'
-import Layout from '../components/layout'
+import React from "react"
+import Layout from "../components/layout"
+import { graphql } from "gatsby"
 
-const Blog = () => {
-    return (
-        <Layout>
-             This is the blog posts using createNodeField
-        </Layout>
-    )
+export const query = graphql`
+  query($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      frontmatter {
+        title
+        date
+      }
+      html
+    }
+  }
+`
+const Blog = props => {
+  return (
+    <Layout>
+      Template : This is the blog posts using createNodeField.
+      <h3>{props.data.markdownRemark.frontmatter.title}</h3>
+      <h3>{props.data.markdownRemark.frontmatter.date}</h3>
+      <div dangerouslySetInnerHTML={{__html:props.data.markdownRemark.html}}></div>
+    </Layout>
+  ) 
 }
 
 export default Blog
+

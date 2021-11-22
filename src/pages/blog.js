@@ -14,6 +14,9 @@ const BlogPage = () => {
               date
               content
             }
+            fields {
+              slug
+            }
             html
             tableOfContents(
               absolute: true
@@ -49,6 +52,8 @@ const BlogPage = () => {
                   {edge.node.frontmatter.date}
                 </h6>
                 <p>{edge.node.frontmatter.content}</p>
+                Read full blog{" "}
+                <Link rel="noreferrer" to={`/blog/${edge.node.fields.slug}`}>here</Link>
               </li>
             )
           })}
