@@ -1,14 +1,16 @@
+
 module.exports = {
   siteMetadata: {
     title: "Anisha Gupta Blog",
-    author: "Änisha",
+    author: "Anisha",
   },
   plugins: [
+    "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-source-contentful",
       options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        spaceId: "byvxvro51l9i",
+        accessToken: "KQC8XyZlMDeXxekBUmXrkL07Gdeu4XgoZl0ZIRNiJ-M",
       },
     },
     "gatsby-plugin-sass",
